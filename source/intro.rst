@@ -1,8 +1,9 @@
-What is Backoffice?
+What is Backoffice API?
 ==================
 
-`Backoffice <https://www.ogantry.com>`_ is a fully-featured, production-stable platform-as-a-service built just for Elixir that
-saves you money and unlocks the full power of Elixir and Phoenix without forcing you to build production infrastructure or deal
-with maintenance and operations. For more information, see https://ogantry.com.
+Welcome to the Backoffice API Reference. If you're new to the Backoffice API, you will need to create an account before you will be able
+to access our ReST endpoints.
 
-Try Backoffice for free without a credit card by following the :ref:`quick start`.
+`Backoffice API <https://documenter.getpostman.com/view/12553133/TVzLqLUT>`_ is a fully-featured, production-stable platform-as-a-service built for
+
+For more information, see https://documenter.getpostman.com/view/12553133/TVzLqLUT.
