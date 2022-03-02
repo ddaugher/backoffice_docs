@@ -3,9 +3,25 @@
 Getting Started Guide
 ~~~~~~~~~~~~~~~~~~~~~
 
-The goal of this guide is to get your app up and running on BackofficeDocs. You will sign up for an account, prepare your app, deploy, and provision a database.
+The goal of this guide is to get you up and running on Backoffice API. You will sign up for an account, prepare your app, deploy, and provision a database.
 
-If you're deploying an open source project, we provide consulting services free of charge. :ref:`Contact us<help>` and we'll send you a pull request with everything you need to get started.
+If you're deploying an open source project, we provide consulting services free of charge. :ref:`Contact us<help>` and we'll send you a pull request with
+everything you need to get started.
+
+Authentication
+--------------
+
+A valid user, with a matching password, can authenticate to the Backoffice API via Access/Refresh Tokens. The user can obtain valid tokens via the
+'create session' endpoint. After successful creation of the tokens, each API call will need to authenticate per request by setting the Authorization
+header with a valid Access Token. Create and manage your Access Token.
+
+We accept just the Access Token:
+
+.. code-block:: bash
+
+    "Authorization": "{{access token}}"
+
+Make sure to store your API tokens somewhere secure and never share them publicly.
 
 Prerequisites
 -------------
