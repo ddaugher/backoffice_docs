@@ -21,12 +21,10 @@ We accept just the Access Token:
 
     "Authorization": "{{access token}}"
 
-Tokens are passwords:
+## Tokens are passwords:
 
-.. code-block:: bash
-
-    Keep in mind that the access token & renewal token grant access to make requests on behalf of an authenticated user. These tokens
-    should be considered as sensitive as passwords, and must not be shared or distributed to untrusted parties.
+Keep in mind that the access token & renewal token grant access to make requests on behalf of an authenticated user. These tokens
+should be considered as sensitive as passwords, and must not be shared or distributed to untrusted parties.
 
 Your API tokens carry many privileges, so be sure to keep them secure! Do not share your secret API tokens in publicly accessible areas such as
 GitHub, client-side code, and so forth.
