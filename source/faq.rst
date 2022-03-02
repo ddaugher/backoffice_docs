@@ -46,18 +46,18 @@ For an example, see :ref:`How to deploy a Ruby app`.
 
 This is probably best answered by taking a look at the `elixir homepage`_ and the `phoenix homepage`_.
 
-*How is Gigalixir different from Heroku and Deis Workflow?*
+*How is BackofficeDocs different from Heroku and Deis Workflow?*
 -----------------------------------------------------------
 
-For a feature comparison table between Gigalixir and Heroku see, :ref:`gigalixir heroku feature comparison`.
+For a feature comparison table between BackofficeDocs and Heroku see, :ref:`gigalixir heroku feature comparison`.
 
 .. image:: venn.png
 
-Heroku is a really great platform and much of Gigalixir was designed based on their excellent `twelve-factor methodology`_. Heroku and Gigalixir are similar in that they both try to make deployment and operations as simple as possible. Elixir applications, however, aren't very much like most other apps today written in Ruby, Python, Java, etc. Elixir apps are distributed, highly-available, hot-upgradeable, and often use lots of concurrent long-lived connections. Gigalixir made many fundamental design choices that ensure all these things are possible.
+Heroku is a really great platform and much of BackofficeDocs was designed based on their excellent `twelve-factor methodology`_. Heroku and BackofficeDocs are similar in that they both try to make deployment and operations as simple as possible. Elixir applications, however, aren't very much like most other apps today written in Ruby, Python, Java, etc. Elixir apps are distributed, highly-available, hot-upgradeable, and often use lots of concurrent long-lived connections. BackofficeDocs made many fundamental design choices that ensure all these things are possible.
 
 For example, Heroku restarts your app every 24 hours regardless of if it is healthy or not. Elixir apps are designed to be long-lived and many use in-memory state so restarting every 24 hours sort of kills that. Heroku also limits the number of concurrent connections you can have. It also has limits to how long these connections can live. Heroku isolates each instance of your app so they cannot communicate with each other, which prevents node clustering. Heroku also restricts SSH access to your containers which makes it impossible to do hot upgrades, remote consoles, remote observers, production tracing, and a bunch of other things. The list goes on, but suffice it to say, running an Elixir app on Heroku forces you to give up a lot of the features that drew you to Elixir in the first place.
 
-Deis Workflow is also really great platform and is very similar to Heroku, except you run it your own infrastructure. Because Deis is open source and runs on Kubernetes, you *could* make modifications to support node clustering and remote observer, but they won't work out of the box and hot upgrades would require some fundamental changes to the way Deis was designed to work. Even so, you'd still have to spend a lot of time solving problems that Gigalixir has already figured out for you.
+Deis Workflow is also really great platform and is very similar to Heroku, except you run it your own infrastructure. Because Deis is open source and runs on Kubernetes, you *could* make modifications to support node clustering and remote observer, but they won't work out of the box and hot upgrades would require some fundamental changes to the way Deis was designed to work. Even so, you'd still have to spend a lot of time solving problems that BackofficeDocs has already figured out for you.
 
 On the other hand, Heroku and Deis are more mature products that have been around much longer. They have more features, but we are working hard to fill in the holes. Heroku and Deis also support languages other than Elixir.
 

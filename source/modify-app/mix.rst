@@ -12,29 +12,29 @@ Then append something like the following in :bash:`prod.exs`. Don't replace what
 
 .. code-block:: elixir
 
-     config :gigalixir_getting_started, GigalixirGettingStartedWeb.Endpoint,
+     config :gigalixir_getting_started, BackofficeDocsGettingStartedWeb.Endpoint,
        http: [port: {:system, "PORT"}], # Possibly not needed, but doesn't hurt
        url: [host: System.get_env("APP_NAME") <> ".gigalixirapp.com", port: 443],
        secret_key_base: Map.fetch!(System.get_env(), "SECRET_KEY_BASE"),
        server: true
 
-     config :gigalixir_getting_started, GigalixirGettingStarted.Repo,
+     config :gigalixir_getting_started, BackofficeDocsGettingStarted.Repo,
        adapter: Ecto.Adapters.Postgres,
        url: System.get_env("DATABASE_URL"),
        ssl: true,
        pool_size: 2 # Free tier db only allows 4 connections. Rolling deploys need pool_size*(n+1) connections where n is the number of app replicas.
 
 1. Replace :elixir:`:gigalixir_getting_started` with your app name e.g. :elixir:`:my_app`
-2. Replace :elixir:`GigalixirGettingStartedWeb.Endpoint` with your endpoint module name. You can find your endpoint module name by running something like
+2. Replace :elixir:`BackofficeDocsGettingStartedWeb.Endpoint` with your endpoint module name. You can find your endpoint module name by running something like
 
    .. code-block:: bash
 
      grep -R "defmodule.*Endpoint" lib/
 
    Phoenix 1.2, 1.3, and 1.4 give different names so this is a common source of errors.
-3. Replace :elixir:`GigalixirGettingStarted.Repo` with your repo module name e.g. :elixir:`MyApp.Repo`
+3. Replace :elixir:`BackofficeDocsGettingStarted.Repo` with your repo module name e.g. :elixir:`MyApp.Repo`
 
-You don't have to worry about setting your :bash:`SECRET_KEY_BASE` config because we generate one and set it for you. 
+You don't have to worry about setting your :bash:`SECRET_KEY_BASE` config because we generate one and set it for you.
 
 Don't forget to commit your changes
 

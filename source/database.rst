@@ -174,24 +174,24 @@ Then, install your extension
 How to Connect a Database
 =========================
 
-If you followed the :ref:`quick start`, then your database should already be connected. If not, connecting to a database is done no differently from apps running outside Gigalixir. We recommend you set a DATABASE_URL config and configure your database adapter accordingly to read from that variable. In short, you'll want to add something like this to your :bash:`prod.exs` file.
+If you followed the :ref:`quick start`, then your database should already be connected. If not, connecting to a database is done no differently from apps running outside BackofficeDocs. We recommend you set a DATABASE_URL config and configure your database adapter accordingly to read from that variable. In short, you'll want to add something like this to your :bash:`prod.exs` file.
 
 .. code-block:: elixir
 
-     config :gigalixir_getting_started, GigalixirGettingStarted.Repo,
+     config :gigalixir_getting_started, BackofficeDocsGettingStarted.Repo,
        adapter: Ecto.Adapters.Postgres,
        url: {:system, "DATABASE_URL"},
        database: "",
        ssl: true,
        pool_size: 2
 
-Replace :elixir:`:gigalixir_getting_started` and :elixir:`GigalixirGettingStarted` with your app name. Then, be sure to set your :bash:`DATABASE_URL` config with something like this.  For more information on setting configs, see :ref:`configs`. If you provisioned your database using, :ref:`provisioning database`, then :bash:`DATABASE_URL` should be set for you automatically once the database is provisioned. Otherwise,
+Replace :elixir:`:gigalixir_getting_started` and :elixir:`BackofficeDocsGettingStarted` with your app name. Then, be sure to set your :bash:`DATABASE_URL` config with something like this.  For more information on setting configs, see :ref:`configs`. If you provisioned your database using, :ref:`provisioning database`, then :bash:`DATABASE_URL` should be set for you automatically once the database is provisioned. Otherwise,
 
 .. code-block:: bash
 
     gigalixir config:set DATABASE_URL="ecto://user:pass@host:port/db"
 
-If you need to provision a database, Gigalixir provides Databases-as-a-Service. See :ref:`provisioning database`. If you prefer to provision your database manually, follow :ref:`How to set up a Google Cloud SQL PostgreSQL database`.
+If you need to provision a database, BackofficeDocs provides Databases-as-a-Service. See :ref:`provisioning database`. If you prefer to provision your database manually, follow :ref:`How to set up a Google Cloud SQL PostgreSQL database`.
 
 .. _`supports PostgreSQL`: https://cloud.google.com/sql/docs/postgres/
 .. _`Phoenix Using MySQL Guide`: http://www.phoenixframework.org/docs/using-mysql
@@ -294,7 +294,7 @@ If you are using elixir releases, we suggest creating a custom Procfile and over
 
 .. code-block:: bash
 
-    web: /app/bin/$GIGALIXIR_APP_NAME eval "MyApp.Release.migrate" && /app/bin/$GIGALIXIR_APP_NAME $GIGALIXIR_COMMAND
+    web: /app/bin/$BACKOFFICEDOCS_APP_NAME eval "MyApp.Release.migrate" && /app/bin/$BACKOFFICEDOCS_APP_NAME $BACKOFFICEDOCS_COMMAND
 
 You have to implement the :elixir:`MyApp.Release.migrate` function with something like https://hexdocs.pm/phoenix/releases.html#ecto-migrations-and-custom-commands. You might also be interested in reading https://elixirforum.com/t/equivalent-to-distillerys-boot-hooks-in-mix-release-elixir-1-9/23431
 

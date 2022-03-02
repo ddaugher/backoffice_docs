@@ -1,10 +1,10 @@
-.. _`make your existing app work on Gigalixir`:
+.. _`make your existing app work on BackofficeDocs`:
 .. _`modifying existing app`:
 
-Modifying an Existing App to Run on Gigalixir
+Modifying an Existing App to Run on BackofficeDocs
 =============================================
 
-Whether you have an existing app or you just ran :bash:`mix phx.new`, the goal of this guide is to get your app ready for deployment on Gigalixir. We assume that you are using Phoenix here. If you aren't, feel free to :ref:`contact us<help>` for help. As long as your app is serving HTTP traffic on :bash:`$PORT`, you should be fine.
+Whether you have an existing app or you just ran :bash:`mix phx.new`, the goal of this guide is to get your app ready for deployment on BackofficeDocs. We assume that you are using Phoenix here. If you aren't, feel free to :ref:`contact us<help>` for help. As long as your app is serving HTTP traffic on :bash:`$PORT`, you should be fine.
 
 .. Important:: If you have an umbrella app, be sure to *also* see :ref:`umbrella`.
 
@@ -13,9 +13,9 @@ Whether you have an existing app or you just ran :bash:`mix phx.new`, the goal o
 Mix vs Distillery vs Elixir Releases
 ------------------------------------
 
-Probably the hardest part of deploying Elixir is choosing which method of deploying you prefer, but don't worry, it's easy to change your mind later and switch. We typically recommend elixir releases because it is easy to set up and unlocks the most important features like observer.  Here is a comparison table to help you choose. 
+Probably the hardest part of deploying Elixir is choosing which method of deploying you prefer, but don't worry, it's easy to change your mind later and switch. We typically recommend elixir releases because it is easy to set up and unlocks the most important features like observer.  Here is a comparison table to help you choose.
 
-=======================  =================== ======================= =========== 
+=======================  =================== ======================= ===========
 Feature                  Mix                 Elixir Releases         Distillery
 =======================  =================== ======================= ===========
 Hot Upgrades                                                         YES
@@ -25,7 +25,7 @@ Built-in to Elixir       YES                 YES
 Easy Configuration[1]    YES
 Clustering               YES                 YES                     YES
 gigalixir ps:migrate     YES                 YES                     YES
-Fast startup[2]                              YES                     YES 
+Fast startup[2]                              YES                     YES
 Hidden Source Code[3]                        YES                     YES
 =======================  =================== ======================= ===========
 

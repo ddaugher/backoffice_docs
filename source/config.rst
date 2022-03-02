@@ -20,9 +20,9 @@ All app configuration is done through environment variables. You can get, set, a
 Environment variables and secrets
 =================================
 
-Environment variables in general are confusing because mix, distillery, and elixir releases all handle it differently. 
+Environment variables in general are confusing because mix, distillery, and elixir releases all handle it differently.
 
-For distillery, I think `Distillery's Runtime Configuration`_ explains it better than I can, but in short, never use :elixir:`System.get_env("FOO")` in your :bash:`prod.exs`. Always use :elixir:`"${FOO}"` instead. Gigalixir automatically sets :bash:`REPLACE_OS_VARS=true` for you so you can skip that step.
+For distillery, I think `Distillery's Runtime Configuration`_ explains it better than I can, but in short, never use :elixir:`System.get_env("FOO")` in your :bash:`prod.exs`. Always use :elixir:`"${FOO}"` instead. BackofficeDocs automatically sets :bash:`REPLACE_OS_VARS=true` for you so you can skip that step.
 
 For mix, always use :elixir:`System.get_env("FOO")` in your :bash:`prod.exs`.
 
@@ -74,13 +74,13 @@ This feature is still a work in progress.
 How to use a custom vm.args
 ===========================
 
-Gigalixir generates a default :bash:`vm.args` file for you and tells Distillery to use it by setting the :bash:`VMARGS_PATH` environment variable. By default, it is set to :bash:`/release-config/vm.args`. If you want to use a custom :bash:`vm.args`, we recommend you follow these instructions.
+BackofficeDocs generates a default :bash:`vm.args` file for you and tells Distillery to use it by setting the :bash:`VMARGS_PATH` environment variable. By default, it is set to :bash:`/release-config/vm.args`. If you want to use a custom :bash:`vm.args`, we recommend you follow these instructions.
 
-Disable Gigalixir's default vm.args
+Disable BackofficeDocs's default vm.args
 
 .. code-block:: bash
 
-    gigalixir config:set GIGALIXIR_DEFAULT_VMARGS=false
+    gigalixir config:set BACKOFFICEDOCS_DEFAULT_VMARGS=false
 
 Create a :bash:`rel/vm.args` file in your repository. It might look something like `gigalixir-getting-started's vm.args file`_.
 
@@ -122,7 +122,7 @@ using the command below.
 
 .. code-block:: bash
 
-    gigalixir config:set GIGALIXIR_RELEASE_OPTIONS="--profile=$RELEASE_NAME:$RELEASE_ENVIRONMENT"
+    gigalixir config:set BACKOFFICEDOCS_RELEASE_OPTIONS="--profile=$RELEASE_NAME:$RELEASE_ENVIRONMENT"
 
 With this config variable set on each of your gigalixir apps, when you deploy the same repo to each app, you'll get a different release.
 
@@ -131,13 +131,13 @@ If you have multiple Phoenix apps in the umbrella, instead of deploying each as 
 Elixir Releases
 ---------------
 
-If you want to pass options to :bash:`mix release` such as the release name, you can specify options with the :bash:`GIGALIXIR_RELEASE_OPTIONS` env var. 
+If you want to pass options to :bash:`mix release` such as the release name, you can specify options with the :bash:`BACKOFFICEDOCS_RELEASE_OPTIONS` env var.
 
 For example, to build a different release other than the default, run
 
 .. code-block:: bash
 
-    gigalixir config:set GIGALIXIR_RELEASE_OPTIONS="my-release"
+    gigalixir config:set BACKOFFICEDOCS_RELEASE_OPTIONS="my-release"
 
 How do I use a private hex dependency?
 ======================================
@@ -226,15 +226,15 @@ We have 2 stacks you can choose from: gigalixir-18, and gigalixir-20.
 These stacks are based on Heroku's heroku-18 and heroku-20, respectively which are based on Ubuntu 18 and 20 respectively.
 gigalixir-20 is the default.
 
-Note that some older apps on gigalixir might be running gigalixir-14 or gigalixir-16, based on Heroku's cedar-14 and heroku-16, which will be end-of-life on November 2nd, 2020 and May 1st, 2021. gigalixir-14 and gigalixir-16 will be also be end-of-life on the same day. See 
+Note that some older apps on gigalixir might be running gigalixir-14 or gigalixir-16, based on Heroku's cedar-14 and heroku-16, which will be end-of-life on November 2nd, 2020 and May 1st, 2021. gigalixir-14 and gigalixir-16 will be also be end-of-life on the same day. See
 https://devcenter.heroku.com/changelog-items/1757 and https://help.heroku.com/0S5P41DC/heroku-16-end-of-life-faq
 
-You can choose your stack when you create your app with 
+You can choose your stack when you create your app with
 
 .. code-block:: bash
 
     gigalixir create --stack gigalixir-20
-    
+
 or you can change it later on with
 
 .. code-block:: bash
@@ -254,7 +254,7 @@ Yes, if your current infrastructure is on AWS, you'll probably want to run your 
 
 Once the app is created, it's difficult to migrate to another region. If you want to do this, Heroku's guide is a good overview of what you should consider. If you don't mind downtime, the transition could be easy, but unfortunately gigalixir isn't able to do it for you with a button press. See https://devcenter.heroku.com/articles/app-migration
 
-One thing to keep in mind is that Gigalixir Postgres databases are as of right now only available in GCP/v2018-us-central1 and GCP/europe-west1, however, we can set up a database for you in AWS manually if you like. Just :ref:`contact us<help>` and we'll create one for you. We plan to add AWS to the Gigalixir CLI soon. 
+One thing to keep in mind is that BackofficeDocs Postgres databases are as of right now only available in GCP/v2018-us-central1 and GCP/europe-west1, however, we can set up a database for you in AWS manually if you like. Just :ref:`contact us<help>` and we'll create one for you. We plan to add AWS to the BackofficeDocs CLI soon.
 
 If you don't see the region you want, please :ref:`contact us<help>` and let us know. We open new regions based purely on demand.
 
@@ -267,7 +267,7 @@ HOST_INDEX contains the index of the replica. The hostname for each replica is r
 
 APP_NAME contains your gigalixir app name.
 
-APP_KEY contains the app specific key you need to fetch information about your app from inside the replica. You probably don't need to use this unless you're doing something really low level, but it's there if you need it. 
+APP_KEY contains the app specific key you need to fetch information about your app from inside the replica. You probably don't need to use this unless you're doing something really low level, but it's there if you need it.
 
 ERLANG_COOKIE contains a randomly generated UUID that we use as your erlang distribution cookie. We set it for you automatically and it's used in your default vm.args file so you don't need to mess with anything, but it's here if you should want to use it.
 
@@ -284,7 +284,7 @@ HOME contains the location of your app's home directly. It is almost always /app
 How can I get a static outgoing ip address?
 ===========================================
 
-Gigalixir doesn't support static outgoing ip addresses at the moment, but some customers have had success using IPBurger.com which is affordable and simple. Just configure your http client to make requests through the proxy. For example, with HTTPoison, something like this
+BackofficeDocs doesn't support static outgoing ip addresses at the moment, but some customers have had success using IPBurger.com which is affordable and simple. Just configure your http client to make requests through the proxy. For example, with HTTPoison, something like this
 
 .. code-block:: elixir
 

@@ -40,7 +40,7 @@ SSL/TLS certificates are set up for you automatically assuming your custom domai
     config :my_app, MyAppWeb.Endpoint,
        force_ssl: [rewrite_on: [:x_forwarded_proto]]
 
-This configures your app to `check the x-forwarded-proto header`_ set by Gigalixir, and redirect to https, if appropriate.
+This configures your app to `check the x-forwarded-proto header`_ set by BackofficeDocs, and redirect to https, if appropriate.
 
 For more information on how this works internally, see :ref:`how-tls-works`.
 

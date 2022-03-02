@@ -6,7 +6,7 @@ Tiers & Pricing
 Tiers
 =====
 
-Gigalixir offers 2 tiers of pricing. The free tier is free, but you are limited to 1 instance up to size 0.5 and 1 free tier database. Also, on the free tier, if you haven't deployed anything for over 30 days, we will send you an email to remind you to keep your account active. If you do not, your app may be scaled down to 0 replicas. We know this isn't ideal, but we think it is better than sleeping instances and we appreciate your understanding since the free tier does cost a lot to run.
+BackofficeDocs offers 2 tiers of pricing. The free tier is free, but you are limited to 1 instance up to size 0.5 and 1 free tier database. Also, on the free tier, if you haven't deployed anything for over 30 days, we will send you an email to remind you to keep your account active. If you do not, your app may be scaled down to 0 replicas. We know this isn't ideal, but we think it is better than sleeping instances and we appreciate your understanding since the free tier does cost a lot to run.
 
 =======================  ========= =============
 Instance Feature         FREE Tier STANDARD Tier
@@ -56,11 +56,11 @@ Role Management                     YES
 
 .. _`gigalixir heroku feature comparison`:
 
-Gigalixir vs Heroku Feature Comparison
+BackofficeDocs vs Heroku Feature Comparison
 ======================================
 
 =======================  =================== ======================= =========== =============== ==================
-Feature                  Gigalixir FREE Tier Gigalixir STANDARD Tier Heroku Free Heroku Standard Heroku Performance
+Feature                  BackofficeDocs FREE Tier BackofficeDocs STANDARD Tier Heroku Free Heroku Standard Heroku Performance
 =======================  =================== ======================= =========== =============== ==================
 Websockets               YES                 YES                     YES         YES             YES
 Log Aggregation          YES                 YES                     YES         YES             YES
@@ -181,7 +181,7 @@ On the free tier apps are scaled down to 0 if there have been no deploys for 30 
 Custom Domain Pricing
 =====================
 
-Gigalixir allows custom domains for each application.  Up to 100 custom domains are included free for each application.  Additional custom domains can be purchased by :ref:`contacting us<help>` and are priced according to the following schedule.
+BackofficeDocs allows custom domains for each application.  Up to 100 custom domains are included free for each application.  Additional custom domains can be purchased by :ref:`contacting us<help>` and are priced according to the following schedule.
 
 ========  =============
 Quantity  Price / Month
@@ -199,9 +199,9 @@ After 10,000 it becomes $100 per month for each 10,000 domain block.
 Limits
 ======
 
-Gigalixir is designed for Elixir/Phoenix apps and it is common for Elixir/Phoenix apps to have many connections open at a time and to have connections open for long periods of time. Because of this, we do not limit the number of concurrent connections or the duration of each connection[1][2].
+BackofficeDocs is designed for Elixir/Phoenix apps and it is common for Elixir/Phoenix apps to have many connections open at a time and to have connections open for long periods of time. Because of this, we do not limit the number of concurrent connections or the duration of each connection[1][2].
 
-We also know that Elixir/Phoenix apps are designed to be long-lived and potentially store state in-memory so we do not restart replicas arbitrarily. In fact, replicas should not restart at all, unless there is an extenuating circumstance that requires it.  For apps that require extreme high availability, we suggest that your app be able to handle node restarts just as you would for any app not running on Gigalixir.
+We also know that Elixir/Phoenix apps are designed to be long-lived and potentially store state in-memory so we do not restart replicas arbitrarily. In fact, replicas should not restart at all, unless there is an extenuating circumstance that requires it.  For apps that require extreme high availability, we suggest that your app be able to handle node restarts just as you would for any app not running on BackofficeDocs.
 
 That said, we do have a number of limits in order to prevent abuse which are listed below. If you need to request a higher limit, :ref:`contact us<help>` and we'll do our best to accomodate you.
 
@@ -220,6 +220,6 @@ Disk          10gb
 Bandwidth     1tb/mo
 ============= ======
 
-[1] Because Gigalixir runs on Google Compute Engine, you may bump into an issue with connections that stay idle for 10m. For more information and how to work around it, see https://cloud.google.com/compute/docs/troubleshooting
+[1] Because BackofficeDocs runs on Google Compute Engine, you may bump into an issue with connections that stay idle for 10m. For more information and how to work around it, see https://cloud.google.com/compute/docs/troubleshooting
 [2] We do have a timeout of 60 minutes for connections after an nginx configuration reload. If you have a long-lived websocket connection and our nginx configuration is reloaded, the connection will be dropped 60 minutes later. Unfortunately, nginx reloads happen frequently under Kubernetes.
 

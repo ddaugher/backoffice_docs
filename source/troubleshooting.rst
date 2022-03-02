@@ -17,11 +17,11 @@ If you've just deployed, and you're not seeing 504s, but you're still seeing the
 
 Our health checks simply check that your app is listening on port $PORT. If you're running a non-HTTP Elixir app, but need to just get health checks to pass, take a look at https://github.com/jesseshieh/elixir-tcp-accept-and-close
 
-If you're using Mix, see `troubleshooting mix`_. 
+If you're using Mix, see `troubleshooting mix`_.
 
-If you're using Distillery, see `troubleshooting distillery`_. 
+If you're using Distillery, see `troubleshooting distillery`_.
 
-If you're using Elixir Releases, see `troubleshooting Elixir releases`_. 
+If you're using Elixir Releases, see `troubleshooting Elixir releases`_.
 
 .. _`troubleshooting mix`:
 
@@ -61,7 +61,7 @@ First, try generating and running a Distillery release locally by running
     mix deps.get
     mix compile
     export SECRET_KEY_BASE="$(mix phx.gen.secret)"
-    export DATABASE_URL="postgresql://user:pass@localhost:5432/foo" 
+    export DATABASE_URL="postgresql://user:pass@localhost:5432/foo"
     MIX_ENV=prod mix distillery.release --env=prod
     # if you are a running distillery below 2.1, then run this instead: MIX_ENV=prod mix release --env=prod
     APP_NAME=gigalixir_getting_started
@@ -125,7 +125,7 @@ First, try generating and running a release locally by running
 
     mix deps.get
     export SECRET_KEY_BASE="$(mix phx.gen.secret)"
-    export DATABASE_URL="postgresql://user:pass@localhost:5432/foo" 
+    export DATABASE_URL="postgresql://user:pass@localhost:5432/foo"
     MIX_ENV=prod mix release
     APP_NAME=gigalixir_getting_started
     PORT=4000 _build/prod/rel/$APP_NAME/bin/$APP_NAME start
@@ -238,11 +238,11 @@ A good first thing to try when you get a `git push` error is :ref:`cleaning your
 
     - remote: cp: cannot stat '/tmp/cache/node_modules/': No such file or directory
 
-        - Try :ref:`cleaning your build cache`. 
+        - Try :ref:`cleaning your build cache`.
 
     - :elixir:`conn.remote_ip` has :elixir:`127.0.0.1` instead of the real client ip
 
-        - Try using https://github.com/kbrw/plug_forwarded_peer or otherwise use the :elixir:`X-Forwarded-For` header instead. Gigalixir apps run behind load balancers which write the real client ip in that header.
+        - Try using https://github.com/kbrw/plug_forwarded_peer or otherwise use the :elixir:`X-Forwarded-For` header instead. BackofficeDocs apps run behind load balancers which write the real client ip in that header.
 
     - (File.Error) could not read file "foo/bar": no such file or directory
 

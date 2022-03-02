@@ -3,7 +3,7 @@
 Getting Started Guide
 ~~~~~~~~~~~~~~~~~~~~~
 
-The goal of this guide is to get your app up and running on Gigalixir. You will sign up for an account, prepare your app, deploy, and provision a database.
+The goal of this guide is to get your app up and running on BackofficeDocs. You will sign up for an account, prepare your app, deploy, and provision a database.
 
 If you're deploying an open source project, we provide consulting services free of charge. :ref:`Contact us<help>` and we'll send you a pull request with everything you need to get started.
 
@@ -45,7 +45,7 @@ Prerequisites
 Install the Command-Line Interface
 ----------------------------------
 
-Next, install the command-line interface. Gigalixir has a web interface at https://console.gigalixir.com/, but you will likely still want the CLI.
+Next, install the command-line interface. BackofficeDocs has a web interface at https://console.gigalixir.com/, but you will likely still want the CLI.
 
 .. tabs::
 
@@ -71,7 +71,7 @@ Next, install the command-line interface. Gigalixir has a web interface at https
 
           pip3 install gigalixir --user
 
-      Make sure the executable is in your path, if it isn't already. 
+      Make sure the executable is in your path, if it isn't already.
 
       .. code-block:: bash
 
@@ -84,7 +84,7 @@ Next, install the command-line interface. Gigalixir has a web interface at https
 
           pip3 install gigalixir --user
 
-      Make sure the executable is in your path, if it isn't already. 
+      Make sure the executable is in your path, if it isn't already.
 
       On Windows Powershell, try something similar to this. Note this may vary based on your python version.
 
@@ -104,7 +104,7 @@ Create an Account
 
 If you already have an account, skip this step.
 
-Create an account using the following command. It will prompt you for your email address and password. You will have to confirm your email before continuing. Gigalixir's free tier does not require a credit card, but you will be limited to 1 instance with 0.2GB of memory and 1 postgresql database limited to 10,000 rows.
+Create an account using the following command. It will prompt you for your email address and password. You will have to confirm your email before continuing. BackofficeDocs's free tier does not require a credit card, but you will be limited to 1 instance with 0.2GB of memory and 1 postgresql database limited to 10,000 rows.
 
 .. code-block:: bash
 
@@ -129,9 +129,9 @@ Verify by running
 Prepare Your App
 ----------------
 
-Most likely, there is nothing you need to do here and you can skip this step and "just deploy", but it depends on what version of phoenix you're running and whether you are okay running in mix mode without distillery or elixir releases. 
+Most likely, there is nothing you need to do here and you can skip this step and "just deploy", but it depends on what version of phoenix you're running and whether you are okay running in mix mode without distillery or elixir releases.
 
-For more information, click here: :ref:`modifying existing app`. 
+For more information, click here: :ref:`modifying existing app`.
 
 Or if you just want to give gigalixir a spin, clone our reference app.
 
@@ -171,7 +171,7 @@ If someone in your organization has already created the gigalixir app and you on
 .. code-block:: bash
 
     gigalixir git:remote $APP_NAME
-    
+
 
 Specify Versions
 ----------------
@@ -196,7 +196,7 @@ Don't forget to commit
     git add elixir_buildpack.config phoenix_static_buildpack.config
     git commit -m "set elixir, erlang, and node version"
 
-If you're using Phoenix v1.6, it uses :bash:`esbuild` to compile your assets but Gigalixir images come with npm, so we will configure npm directly to deploy our assets. Add a :bash:`assets/package.json` file if you don't have any with the following:
+If you're using Phoenix v1.6, it uses :bash:`esbuild` to compile your assets but BackofficeDocs images come with npm, so we will configure npm directly to deploy our assets. Add a :bash:`assets/package.json` file if you don't have any with the following:
 
 .. code-block:: bash
 

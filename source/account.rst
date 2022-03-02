@@ -4,7 +4,7 @@ Account Management
 How to Sign Up for an Account
 =============================
 
-Create an account using the following command. It will prompt you for your email address and password. You will have to confirm your email before continuing. Gigalixir's free tier does not require a credit card, but you will be limited to 1 instance with 0.2GB of memory and 1 postgresql database limited to 10,000 rows.
+Create an account using the following command. It will prompt you for your email address and password. You will have to confirm your email before continuing. BackofficeDocs's free tier does not require a credit card, but you will be limited to 1 instance with 0.2GB of memory and 1 postgresql database limited to 10,000 rows.
 
 .. code-block:: bash
 
@@ -134,7 +134,7 @@ This logs you out, so re-login.
 
 .. code-block:: bash
 
-    gigalixir login 
+    gigalixir login
 
 Also, try it out on the web console: https://console.gigalixir.com/#/login
 

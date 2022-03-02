@@ -19,7 +19,7 @@ There is an extra flag you can pass to clean your cache before building in case 
 
 .. code-block:: bash
 
-    git -c http.extraheader="GIGALIXIR-CLEAN: true" push gigalixir
+    git -c http.extraheader="BACKOFFICEDOCS-CLEAN: true" push gigalixir
 
 .. _`zero-downtime`:
 
@@ -90,12 +90,12 @@ You'll probably also want to check all your environment variables and make sure 
 How to Set Up Continuous Integration (CI/CD)?
 =============================================
 
-Since deploys are just a normal :bash:`git push`, Gigalixir should work with any CI/CD tool out there. For Travis CI, put something like this in your :bash:`.travis.yml`
+Since deploys are just a normal :bash:`git push`, BackofficeDocs should work with any CI/CD tool out there. For Travis CI, put something like this in your :bash:`.travis.yml`
 
 .. code-block:: yaml
 
     script:
-      - git remote add gigalixir https://$GIGALIXIR_EMAIL:$GIGALIXIR_API_KEY@git.gigalixir.com/$GIGALIXIR_APP_NAME.git
+      - git remote add gigalixir https://$BACKOFFICEDOCS_EMAIL:$BACKOFFICEDOCS_API_KEY@git.gigalixir.com/$BACKOFFICEDOCS_APP_NAME.git
       - mix test && git push -f gigalixir HEAD:refs/heads/master
     language: elixir
     elixir: 1.5.1
@@ -107,16 +107,16 @@ Since deploys are just a normal :bash:`git push`, Gigalixir should work with any
 
 Be sure to replace :bash:`gigalixir_getting_started_test` with your test database name configured in your :bash:`test.exs` file along with your db username and password.
 
-In the Travis CI Settings, add a :bash:`GIGALIXIR_EMAIL` environment variable, but be sure to URI encode it e.g. :bash:`foo%40gigalixir.com`.
+In the Travis CI Settings, add a :bash:`BACKOFFICEDOCS_EMAIL` environment variable, but be sure to URI encode it e.g. :bash:`foo%40gigalixir.com`.
 
-Add a :bash:`GIGALIXIR_API_KEY` environment variable which you can find in your :bash:`~/.netrc` file e.g. :bash:`b9fbde22-fb73-4acb-8f74-f0aa6321ebf7`.
+Add a :bash:`BACKOFFICEDOCS_API_KEY` environment variable which you can find in your :bash:`~/.netrc` file e.g. :bash:`b9fbde22-fb73-4acb-8f74-f0aa6321ebf7`.
 
-Finally, add a :bash:`GIGALIXIR_APP_NAME` environment variable with the name of your app e.g. :bash:`real-hasty-fruitbat`
+Finally, add a :bash:`BACKOFFICEDOCS_APP_NAME` environment variable with the name of your app e.g. :bash:`real-hasty-fruitbat`
 
 Using GitLab CI or any other CI/CD service should be very similar. For an example GitLab CI yaml file, see this `.gitlab-ci.yml <https://github.com/gigalixir/gigalixir-getting-started/blob/42a73c9e0f7de50cbfabd092a504aa454f9f9fc8/.gitlab-ci.yml>`_ file.
 
 Using GitHub Actions is also similar. For example, see https://gist.github.com/jesseshieh/7b231370874445592a40bf5ed6961460
-You might also take a look at this GitHub Action for Gigalixir: https://github.com/marketplace/actions/gigalixir-action
+You might also take a look at this GitHub Action for BackofficeDocs: https://github.com/marketplace/actions/gigalixir-action
 
 Using CircleCI is also similar. For an example, see this `config.yml <https://github.com/gigalixir/gigalixir-getting-started/blob/42a73c9e0f7de50cbfabd092a504aa454f9f9fc8/.circleci/config.yml>`_.
 
@@ -133,8 +133,8 @@ If you want to automatically run migrations on each automatic deploy, you have t
        pip3 install gigalixir
 
        # deploy
-       gigalixir login -e "$GIGALIXIR_EMAIL" -p "$GIGALIXIR_PASSWORD" -y
-       gigalixir git:remote $GIGALIXIR_APP_NAME
+       gigalixir login -e "$BACKOFFICEDOCS_EMAIL" -p "$BACKOFFICEDOCS_PASSWORD" -y
+       gigalixir git:remote $BACKOFFICEDOCS_APP_NAME
        git push -f gigalixir HEAD:refs/heads/master
        # some code to wait for new release to go live
 
@@ -144,7 +144,7 @@ If you want to automatically run migrations on each automatic deploy, you have t
        echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
 
        # migrate
-       gigalixir ps:migrate -a $GIGALIXIR_APP_NAME
+       gigalixir ps:migrate -a $BACKOFFICEDOCS_APP_NAME
 
 
 How to Set Up Review Apps (Feature branch apps)
@@ -152,14 +152,14 @@ How to Set Up Review Apps (Feature branch apps)
 
 Review Apps let you run a new instance for every branch and tear them down after the branch is deleted. For GitLab CI/CD Review Apps, all you have to do is create a :bash:`.gitlab-ci.yml` file that looks something like `this one <https://github.com/gigalixir/gigalixir-getting-started/blob/42a73c9e0f7de50cbfabd092a504aa454f9f9fc8/.gitlab-ci.yml>`_.
 
-Be sure to create CI/CD secrets for :bash:`GIGALIXIR_EMAIL`, :bash:`GIGALIXIR_PASSWORD`, and :bash:`GIGALIXIR_APP_NAME`.
+Be sure to create CI/CD secrets for :bash:`BACKOFFICEDOCS_EMAIL`, :bash:`BACKOFFICEDOCS_PASSWORD`, and :bash:`BACKOFFICEDOCS_APP_NAME`.
 
 For review apps run on something other than GitLab, the setup should be very similar.
 
-How to Set the Gigalixir Git Remote
+How to Set the BackofficeDocs Git Remote
 ===================================
 
-If you have a Gigalixir app already created and want to push a git repository to it, set the git remote by running
+If you have a BackofficeDocs app already created and want to push a git repository to it, set the git remote by running
 
 .. code-block:: bash
 
@@ -183,7 +183,7 @@ to work. For information on how to install the latest version of git on Ubuntu, 
 
 .. code-block:: bash
 
-    git -c http.extraheader="GIGALIXIR-HOT: true" push gigalixir
+    git -c http.extraheader="BACKOFFICEDOCS-HOT: true" push gigalixir
 
 .. _`rollback`:
 
@@ -246,7 +246,7 @@ How to do blue-green or canary deploys?
 
 This feature is in beta as of 3/19/2019. You'll need the CLI v1.0.19 or later.
 
-Apps on Gigalixir can be assigned another app as its canary. An arbitrary weight can also be assigned to control the traffic between the two apps. For example, if you have :bash:`my-app` with a canary assigned to it called :bash:`my-app-canary` with weight of 10, then :bash:`my-app` will receive 90% of the traffic and :bash:`my-app-canary` will receive 10% of the traffic. If you want to do blue-green deploys, simply flip the traffic between 0 and 100 to control which app receives the traffic. For example,
+Apps on BackofficeDocs can be assigned another app as its canary. An arbitrary weight can also be assigned to control the traffic between the two apps. For example, if you have :bash:`my-app` with a canary assigned to it called :bash:`my-app-canary` with weight of 10, then :bash:`my-app` will receive 90% of the traffic and :bash:`my-app-canary` will receive 10% of the traffic. If you want to do blue-green deploys, simply flip the traffic between 0 and 100 to control which app receives the traffic. For example,
 
 .. code-block:: bash
 
@@ -319,7 +319,7 @@ How to deploy a Ruby app
     git push gigalixir
     curl https://$APP.gigalixirapp.com/
 
-Does Gigalixir have any web hooks?
+Does BackofficeDocs have any web hooks?
 ==================================
 
 We haven't built-in any web hooks, but most of what you need can be accomplished with buildpacks at build time and distillery hooks or modifying your Procfile.

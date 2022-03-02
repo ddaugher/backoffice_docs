@@ -65,7 +65,7 @@ To see how many replicas are actually running in production compared to how many
 How do I manage multiple apps?
 ==============================
 
-All relevant CLI commands can take an optional :bash:`--app_name` flag to specify which app you want to run the command on. Or, if you prefer, you can use the :bash:`GIGALIXIR_APP` environment variable instead. Without the app name, Gigalixir tries to auto-detect the app name based on your git remotes which works fine when you only have one app.
+All relevant CLI commands can take an optional :bash:`--app_name` flag to specify which app you want to run the command on. Or, if you prefer, you can use the :bash:`BACKOFFICEDOCS_APP` environment variable instead. Without the app name, BackofficeDocs tries to auto-detect the app name based on your git remotes which works fine when you only have one app.
 
 How to List Apps
 ================

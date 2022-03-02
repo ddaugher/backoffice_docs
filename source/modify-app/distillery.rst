@@ -41,7 +41,7 @@ Add something like the following in :bash:`prod.exs`
 
 .. code-block:: elixir
 
-     config :gigalixir_getting_started, GigalixirGettingStartedWeb.Endpoint,
+     config :gigalixir_getting_started, BackofficeDocsGettingStartedWeb.Endpoint,
        server: true, # Without this line, your app will not start the web server!
        load_from_system_env: true, # Needed for Phoenix 1.3. Doesn't hurt for other versions
        http: [port: {:system, "PORT"}], # Needed for Phoenix 1.2 and 1.4. Doesn't hurt for 1.3.
@@ -50,7 +50,7 @@ Add something like the following in :bash:`prod.exs`
        cache_static_manifest: "priv/static/cache_manifest.json",
        version: Mix.Project.config[:version] # To bust cache during hot upgrades
 
-     config :gigalixir_getting_started, GigalixirGettingStarted.Repo,
+     config :gigalixir_getting_started, BackofficeDocsGettingStarted.Repo,
        adapter: Ecto.Adapters.Postgres,
        url: "${DATABASE_URL}",
        database: "", # Works around a bug in older versions of ecto. Doesn't hurt for other versions.
@@ -60,16 +60,16 @@ Add something like the following in :bash:`prod.exs`
 .. Attention:: :elixir:`server: true` **is very important and is commonly left out. Make sure you have this line.**
 
 1. Replace :elixir:`:gigalixir_getting_started` with your app name e.g. :elixir:`:my_app`
-2. Replace :elixir:`GigalixirGettingStartedWeb.Endpoint` with your endpoint module name. You can find your endpoint module name by running something like
+2. Replace :elixir:`BackofficeDocsGettingStartedWeb.Endpoint` with your endpoint module name. You can find your endpoint module name by running something like
 
    .. code-block:: bash
 
      grep -R "defmodule.*Endpoint" lib/
 
    Phoenix 1.2, 1.3, and 1.4 give different names so this is a common source of errors.
-3. Replace :elixir:`GigalixirGettingStarted.Repo` with your repo module name e.g. :elixir:`MyApp.Repo`
+3. Replace :elixir:`BackofficeDocsGettingStarted.Repo` with your repo module name e.g. :elixir:`MyApp.Repo`
 
-You don't have to worry about setting your :bash:`SECRET_KEY_BASE` config because we generate one and set it for you. If you don't use a gigalixir managed postgres database, you'll have to set the :bash:`DATABASE_URL` yourself. 
+You don't have to worry about setting your :bash:`SECRET_KEY_BASE` config because we generate one and set it for you. If you don't use a gigalixir managed postgres database, you'll have to set the :bash:`DATABASE_URL` yourself.
 
 Verify
 ^^^^^^

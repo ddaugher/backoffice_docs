@@ -1,10 +1,10 @@
 Concepts
 ~~~~~~~~
 
-How Does Gigalixir Work?
+How Does BackofficeDocs Work?
 ========================
 
-When you deploy an app on Gigalixir, you :bash:`git push` the source code to a build server. The build server compiles the code and assets and generates a standalone tarball we call a slug. The controller then combines the slug and your app configuration into a release. The release is deployed to run containers which actually run your app.
+When you deploy an app on BackofficeDocs, you :bash:`git push` the source code to a build server. The build server compiles the code and assets and generates a standalone tarball we call a slug. The controller then combines the slug and your app configuration into a release. The release is deployed to run containers which actually run your app.
 
 .. image:: deploy.png
 
@@ -25,7 +25,7 @@ Components
   - *Slug Storage*: This is where your slugs are stored.
   - *Observer*: This is an application that runs on your local machine that connects to your production node to show you everything you could ever want to know about your live production app.
   - *Run Container*: This is the container that your app runs in.
-  - *Command-Line Interface*: This is the command-line tool that runs on your local machine that you use to control Gigalixir.
+  - *Command-Line Interface*: This is the command-line tool that runs on your local machine that you use to control BackofficeDocs.
 
 Concepts
 --------
@@ -69,7 +69,7 @@ By default, the buildpacks we use include
   - https://github.com/gigalixir/gigalixir-buildpack-releases
 
     - To run mix release if you are running Elixir 1.9 and using the built-in releases
-    - This is only run if you have a config/releases.exs file present. 
+    - This is only run if you have a config/releases.exs file present.
 
       .. Note:: Elixir 1.11 adds :bash:`config/runtime.exs`. If you use that instead, then you'll want to specify buildpacks since we can no longer detect if you want releases or mix mode. See :ref:`buildpacks-releases`.
 
@@ -110,7 +110,7 @@ There is an extra flag you can pass to deploy by hot upgrade instead of a restar
 
 .. code-block:: bash
 
-    git -c http.extraheader="GIGALIXIR-HOT: true" push gigalixir
+    git -c http.extraheader="BACKOFFICEDOCS-HOT: true" push gigalixir
 
 A hot upgrade follows the same steps as a regular deploy, except for a few differences. In order for distillery to build an upgrade, it needs access to your old app so we download it and make it available in the build container.
 
@@ -121,10 +121,10 @@ Once the slug is generated and uploaded, we execute an upgrade script on each ru
 .. _`Distillery appup documentation`: https://hexdocs.pm/distillery/upgrades-and-downgrades.html#appups
 .. _`Distillery's upgrade command`: https://hexdocs.pm/distillery/walkthrough.html#deploying-an-upgrade
 
-How secure is Gigalixir?
+How secure is BackofficeDocs?
 ========================
 
-Gigalixir takes security very, very seriously.
+BackofficeDocs takes security very, very seriously.
 
 #. Every app exists in its own Kubernetes namespaces and we use Kubernetes role-based access controls to ensure no other apps have access to your app or its metadata.
 #. Your build environment is fully isolated using Docker containers.
@@ -132,9 +132,9 @@ Gigalixir takes security very, very seriously.
 #. All API endpoints are authenticated using API keys instead of your password. API keys can be invalidated at any time by regenerating a new one.
 #. Remote console and remote observer use SSH tunnels to secure traffic.
 #. Erlang does not encrypt distribution traffic between your nodes by default, but you can `set it up to use SSL`_. For an extra layer of security, we route distribution traffic directly to each node so no other apps can sniff the traffic.
-#. We use `Stripe`_ to manage payment methods so Gigalixir never knows your credit card number.
+#. We use `Stripe`_ to manage payment methods so BackofficeDocs never knows your credit card number.
 #. Passwords and app configs are encrypted at rest using `Cloak`_.
-#. Traffic between Gigalixir services and components is TLS encrypted.
+#. Traffic between BackofficeDocs services and components is TLS encrypted.
 
 .. _`Signed URLs`: https://cloud.google.com/storage/docs/access-control/signed-urls
 .. _`Cloak`: https://github.com/danielberkompas/cloak

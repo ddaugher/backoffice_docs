@@ -20,7 +20,7 @@ To install libcluster, add this to the deps list in :bash:`mix.exs`
 
     {:libcluster, "~> 3.2"}
 
-Next, add the following to the existing :elixir:`start` function in your :bash:`application.ex` file. Remember to replace :elixir:`GigalixirGettingStarted` with your application name.
+Next, add the following to the existing :elixir:`start` function in your :bash:`application.ex` file. Remember to replace :elixir:`BackofficeDocsGettingStarted` with your application name.
 
 .. code-block:: elixir
 
@@ -28,7 +28,7 @@ Next, add the following to the existing :elixir:`start` function in your :bash:`
     topologies = Application.get_env(:libcluster, :topologies) || []
 
     children = [
-      {Cluster.Supervisor, [topologies, [name: GigalixirGettingStarted.ClusterSupervisor]]},
+      {Cluster.Supervisor, [topologies, [name: BackofficeDocsGettingStarted.ClusterSupervisor]]},
       ... # other children
     ]
     ...
@@ -49,7 +49,7 @@ Your app configuration needs to have something like this in it. For a full examp
             kubernetes_node_basename: System.get_env("LIBCLUSTER_KUBERNETES_NODE_BASENAME")]]]
     ...
 
-Gigalixir handles permissions so that you have access to Kubernetes endpoints and we automatically set your node name and erlang cookie so that your nodes can reach each other. We don't firewall each container from each other like Heroku does. We also automatically set the environment variables :bash:`LIBCLUSTER_KUBERNETES_SELECTOR`, :bash:`LIBCLUSTER_KUBERNETES_NODE_BASENAME`, :bash:`APP_NAME`, and :bash:`MY_POD_IP` for you. See `gigalixir-run`_ for more details.
+BackofficeDocs handles permissions so that you have access to Kubernetes endpoints and we automatically set your node name and erlang cookie so that your nodes can reach each other. We don't firewall each container from each other like Heroku does. We also automatically set the environment variables :bash:`LIBCLUSTER_KUBERNETES_SELECTOR`, :bash:`LIBCLUSTER_KUBERNETES_NODE_BASENAME`, :bash:`APP_NAME`, and :bash:`MY_POD_IP` for you. See `gigalixir-run`_ for more details.
 
 .. _`libcluster's documentation`: https://github.com/bitwalker/libcluster
 .. _`gigalixir-getting-started's prod.exs file`: https://github.com/gigalixir/gigalixir-getting-started/blob/ff56b063b4bb2519acd3dc82893ce6accd714d8e/config/prod.exs#L33

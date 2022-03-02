@@ -1,10 +1,10 @@
 Packages & Dependencies
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-What packages are available to my Gigalixir app?
+What packages are available to my BackofficeDocs app?
 ================================================
 
-Gigalixir's stacks are based on Heroku's stacks so anything you find here, you can find on Gigalixir.
+BackofficeDocs's stacks are based on Heroku's stacks so anything you find here, you can find on BackofficeDocs.
 https://devcenter.heroku.com/articles/stack-packages#installed-ubuntu-packages
 
 To find what stack you are on, run `gigalixir apps:info` or `gigalixir ps`. If you are on gigalixir-18, check the heroku-18 column. Same for the other stacks.
@@ -62,12 +62,12 @@ Add your personal access token as a config var by running
 
     gigalixir config:set -a $APP_NAME GITHUB_AUTH_TOKEN="$GITHUB_TOKEN"
 
-The last step is to add the dependency to your :bash:`mix.exs` file. Add it as you would any other git dependency, but be sure you use the https url and not the ssh url. For example, 
+The last step is to add the dependency to your :bash:`mix.exs` file. Add it as you would any other git dependency, but be sure you use the https url and not the ssh url. For example,
 
 .. code-block:: elixir
 
     {:foo, git: "https://github.com/jesseshieh/foo.git", override: true}
 
-That should be it. 
+That should be it.
 
 Alternatively, you could also put your github username and personal access token directly into the git url, but it's generally not a good idea to check in secrets to source control. You could use :elixir:`System.get_env` interpolated inside the git url, but then you run the risk of the secrets getting saved to :bash:`mix.lock`.

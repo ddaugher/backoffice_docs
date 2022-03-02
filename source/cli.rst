@@ -1,7 +1,7 @@
-The Gigalixir Command-Line Interface
+The BackofficeDocs Command-Line Interface
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The Gigalixir Command-Line Interface or CLI is a tool you install on your local machine to control Gigalixir.
+The BackofficeDocs Command-Line Interface or CLI is a tool you install on your local machine to control BackofficeDocs.
 
 .. _`installation`:
 
@@ -44,7 +44,7 @@ How to Upgrade the CLI
 Encryption
 ----------
 
-All HTTP requests made between your machine and Gigalixir's servers are encrypted.
+All HTTP requests made between your machine and BackofficeDocs's servers are encrypted.
 
 Conventions
 -----------
@@ -61,14 +61,14 @@ When you login with your email and password, you receive an API key. This API ke
 Error Reporting
 ---------------
 
-Bugs in the CLI are reported to Gigalixir's error tracking service. Currently, the only way to disable this is by modifying the source code. `Pull requests`_ are also accepted!
+Bugs in the CLI are reported to BackofficeDocs's error tracking service. Currently, the only way to disable this is by modifying the source code. `Pull requests`_ are also accepted!
 
 .. _`Pull requests`: https://github.com/gigalixir/gigalixir-cli/pulls
 
 Open Source
 -----------
 
-The Gigalixir CLI is open source and we welcome pull requests. See `the gigalixir-cli repository`_.
+The BackofficeDocs CLI is open source and we welcome pull requests. See `the gigalixir-cli repository`_.
 
 .. _`the gigalixir-cli repository`: https://github.com/gigalixir/gigalixir-cli
 
@@ -79,4 +79,4 @@ Add the following to your :bash:`.bashrc` file and restart your shell.
 
 .. code-block:: bash
 
-    eval "$(_GIGALIXIR_COMPLETE=source gigalixir)"
+    eval "$(_BACKOFFICEDOCS_COMPLETE=source gigalixir)"
