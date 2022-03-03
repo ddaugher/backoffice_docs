@@ -31,6 +31,26 @@ GitHub, client-side code, and so forth.
 
 All API requests must be made over HTTPS. Calls made over plain HTTP will fail. API requests without authentication will also fail.
 
+Rate Limits
+-----------
+
+By default, you can make up to 120 requests per minute for standard API requests. Exceptions can be made for customers with higher volumes.
+Please contact us for more information.
+
+Every day many thousands of requests will be made to our OGantry API. To help manage the sheer volume of these requests, limits are
+placed on the number of requests that can be made. These limits help us provide the reliable and scalable API that our developer
+community relies on.
+
+The maximum number of requests that are allowed is based on a time interval, some specified period or window of time. Our API has a rate
+limit interval, measuring the maximum number of requests allowed per minute. If an endpoint has a minute rate limit of 60 requests/minute,
+then up to 60 requests over any 1-minute interval is allowed.
+
+Rate limits are applied based on each authenticated user. When these limits are exceeded, an error is returned. Keep reading to learn more
+about these details and tips on how to avoid being rate limited.
+Please note: In addition to rate limits, we also have caps that limit the total number of requests that any authenticated user can retrieve
+from all endpoints in a given calendar month, which is based on your access level. The maximum number of requests per calendar month will
+continue to increase throughout the month and will reset on the first day of each month. When these limits are exceeded, an error is returned.
+
 Prerequisites
 -------------
 
