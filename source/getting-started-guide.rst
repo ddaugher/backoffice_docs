@@ -21,7 +21,7 @@ We accept just the Access Token:
 
     "Authorization": "{{access token}}"
 
-## Tokens are passwords:
+*Tokens are passwords*
 
 Keep in mind that the access token & renewal token grant access to make requests on behalf of an authenticated user. These tokens
 should be considered as sensitive as passwords, and must not be shared or distributed to untrusted parties.
@@ -50,6 +50,47 @@ about these details and tips on how to avoid being rate limited.
 Please note: In addition to rate limits, we also have caps that limit the total number of requests that any authenticated user can retrieve
 from all endpoints in a given calendar month, which is based on your access level. The maximum number of requests per calendar month will
 continue to increase throughout the month and will reset on the first day of each month. When these limits are exceeded, an error is returned.
+
+*HTTP headers and response codes*
+Use the HTTP headers in order to understand where the application is at for a given rate limit, on the method that was just utilized.
+
+======================  =======================
+Header Name             Description
+======================  =======================
+x-ratelimit-limit	    The maximum number of requests per hour that you can make
+x-ratelimit-remaining	The number of requests remaining in the current rate limit window
+x-ratelimit-reset	    the remaining window before the rate limit resets
+
+When an application exceeds the rate limit for a given API endpoint, the API will return a *HTTP 429 “Too Many Requests”* response
+code, and the following error will be returned in the response body:
+
+Response::
+  {
+    success: false,
+    message: "Sorry, your account has reached your ALLOWED LIMIT OF REQUESTS/MINUTE",
+     error_code: 429,
+    errors: "Rate Limit Error, unable to proceed",
+    data: %{}
+  }
+
+*Recovering from a rate limit*
+
+When these rate limits are exceeded, a 429 'Too many requests' error is returned from the endpoint. As discussed below, when rate
+limit errors occur, a best practice is to examine HTTP headers that indicate when the limit resets and pause requests until then.
+
+When a "too many requests" or rate-limiting error occurs, the frequency of making requests needs to be slowed down. When a rate
+limit error is hit, the x-rate-limit-reset: HTTP header can be checked to learn when the rate-limiting will reset.
+
+Another common pattern is based on exponential backoff, where the time between requests starts off small (for example, a few seconds),
+then doubled before each retry. This is continued until a request is successful, or some reasonable maximum time between requests is
+reached (for example, a few minutes).
+
+Ideally, the client-side is self-aware of existing rate limits and can pause requests until the currently exceeded window expires.
+If you exceed a 1-minute limit, then waiting a minute or two before retrying makes sense.
+
+Note that beyond these limits on the number of requests, the standard level of access provides up to 10,000 requests per month.
+If you have exceeded the monthly limit on the number of requests, then our recommendation would be to make your app raise a
+notification and know its enrollment day of the month and hold off requests until that day.
 
 Prerequisites
 -------------
