@@ -66,13 +66,14 @@ x-ratelimit-reset	    the remaining window before the rate limit resets
 When an application exceeds the rate limit for a given API endpoint, the API will return a *HTTP 429 “Too Many Requests”* response
 code, and the following error will be returned in the response body:
 
-::
+.. code-block:: bash
+
   {
-    success: false,
-    message: "Sorry, your account has reached your ALLOWED LIMIT OF REQUESTS/MINUTE",
-     error_code: 429,
-    errors: "Rate Limit Error, unable to proceed",
     data: %{}
+    error_code: 429,
+    errors: "Rate Limit Error, unable to proceed",
+    message: "Sorry, your account has reached your ALLOWED LIMIT OF REQUESTS/MINUTE",
+    success: false,
   }
 
 *Recovering from a rate limit*
