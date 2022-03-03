@@ -52,6 +52,7 @@ from all endpoints in a given calendar month, which is based on your access leve
 continue to increase throughout the month and will reset on the first day of each month. When these limits are exceeded, an error is returned.
 
 *HTTP headers and response codes*
+
 Use the HTTP headers in order to understand where the application is at for a given rate limit, on the method that was just utilized.
 
 ======================  =======================
@@ -60,11 +61,12 @@ Header Name             Description
 x-ratelimit-limit	    The maximum number of requests per hour that you can make
 x-ratelimit-remaining	The number of requests remaining in the current rate limit window
 x-ratelimit-reset	    the remaining window before the rate limit resets
+======================  =======================
 
 When an application exceeds the rate limit for a given API endpoint, the API will return a *HTTP 429 “Too Many Requests”* response
 code, and the following error will be returned in the response body:
 
-Response::
+::
   {
     success: false,
     message: "Sorry, your account has reached your ALLOWED LIMIT OF REQUESTS/MINUTE",
