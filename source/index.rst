@@ -31,3 +31,4 @@
     concepts
     faq
     main
+    services/alerts
